@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+# A Bash script that displays lines containing the "bash" word to find the PID.
+
+# Get the PID of the current Bash process
+current_pid=$$
+
+# Display the process hierarchy for the current Bash process
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest | grep "$current_pid\b"
