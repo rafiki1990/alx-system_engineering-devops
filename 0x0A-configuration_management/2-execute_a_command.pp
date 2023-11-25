@@ -1,4 +1,4 @@
-# Kill the "killmenow" process using pkill
+# create a manifest that kills a process named killmenow.
 
 exec { 'kill-killmenow-process':
   command => '/usr/bin/pkill killmenow',
