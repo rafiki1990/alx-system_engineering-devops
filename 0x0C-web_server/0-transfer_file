@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# A bash script that transfers a file from client to server
+
+# Check if all four parameters are provided
+if [ "$#" -ne 4 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+# Assign parameters to variables
+PATH_TO_FILE="$1"
+IP="$2"
+USERNAME="$3"
+PATH_TO_SSH_KEY="$4"
+
+# Use scp to transfer the file to the server
+scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP:~/"
+
+# Use scp to transfer the file to the server
+if scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP:~/"; then
+    echo "File transferred successfully to $USERNAME@$IP:~/"
+else
+    echo "Error transferring file to $USERNAME@$IP:~/"
+fi
