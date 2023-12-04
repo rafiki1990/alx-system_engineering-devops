@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Configure HAProxy with explicit timeout settings
+
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
+sudo apt-get -y update
+
+# Install HAProxy
+sudo apt-get -y install haproxy
+sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+sudo sed -i -e '$a\listen http-in\n\tbind :80\n\tbalance roundrobin\n\tserver 306457-web-01 100.26.250.98:80 check\n\tserver 306457-web-02 54.237.59.185:80 check\n' /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
