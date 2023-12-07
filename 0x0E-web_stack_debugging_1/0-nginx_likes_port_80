@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Finding out what keeps nginx from listening to port 80.
+# And come up with a Bash script with the minimum number of commands to automate my fix
+
+# Step 1: Remove the default site configuration in sites-enabled (if it exists).
+rm /etc/nginx/sites-enabled/default
+
+# Step 2: Create a symbolic link (symlink) from sites-available to sites-enabled.
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Step 3: Restart the Nginx service to apply the changes.
+service nginx restart
