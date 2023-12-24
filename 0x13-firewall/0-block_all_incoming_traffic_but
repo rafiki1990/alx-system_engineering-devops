@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# A bashscript that configures the firewall to allow ssh,HTTP and HTTPS
+
+
+# Check if SSH is accessible before configuring UFW
+if nc -z -w5 54.90.169.231 22; then
+  echo "SSH is accessible. Proceeding with UFW configuration..."
+else
+  echo "SSH is not accessible. Aborting UFW configuration to prevent potential lockout."
+  exit 1
+fi
+
+# Update package repositories
+sudo apt-get update
+
+# Install UFW
+sudo apt-get install ufw
+
+# Allow SSH, HTTP, and HTTPS traffic
+sudo ufw allow 22/tcp   # Allow SSH
+sudo ufw allow 80/tcp   # Allow HTTP
+sudo ufw allow 443/tcp  # Allow HTTPS
+
+# Block all incoming traffic by default
+sudo ufw default deny incoming
+
+# Enable UFW
+sudo ufw enable
+
+# Check UFW status
+sudo ufw status
