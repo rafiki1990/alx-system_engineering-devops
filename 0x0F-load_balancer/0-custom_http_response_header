@@ -30,8 +30,7 @@ echo "server {
         root /var/www/html;
         internal;
     }
-}" 
-sudo nano /etc/nginx/sites-available/default
+}" > /etc/nginx/sites-available/default
 
 # Restart Nginx to apply the changes
 service nginx restart
