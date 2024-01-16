@@ -3,7 +3,7 @@
 import requests
 
 # Reddit API credentials
-user_agent = 'rugema3/1.0'
+user_agent = ''
 
 
 def number_of_subscribers(subreddit):

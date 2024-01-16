@@ -22,7 +22,7 @@ def recurse(subreddit, hot_list=None, after="", count=0):
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {
-        "User-Agent": "rugema3/1.0"
+        "User-Agent": ""
     }
     params = {
         "after": after,

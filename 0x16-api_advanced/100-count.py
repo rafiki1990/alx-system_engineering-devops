@@ -16,7 +16,7 @@ def count_words(subreddit, word_list, word_counts=[], after=None):
     Returns:
         None: The results are printed directly.
     """
-    user_agent = {'User-agent': 'rugema3'}
+    user_agent = {'User-agent': ''}
     posts = requests.get(
             f'http://www.reddit.com/r/{subreddit}/hot.json?after={after}',
             headers=user_agent
